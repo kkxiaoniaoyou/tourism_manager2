@@ -1,0 +1,36 @@
+server:
+  port: 9511
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+    accept-count: 1000
+    threads:
+      max: 800
+      min-spare: 100
+spring:
+  application:
+    name: TourismManagerApplication
+  devtools:
+    restart:
+      enabled: true
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  typeAliasesPackage: com.rabbiter.**.domain
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+logging:
+  file:
+    path: ./logs
+  config: classpath:logback-spring.xml

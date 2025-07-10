@@ -1,0 +1,54 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    druid:
+      url: jdbc:mysql://localhost:3306/tourism_manager?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+      username: root
+      password: 154200
+      initialSize: 5
+      minIdle: 10
+      maxActive: 20
+      maxWait: 60000
+      connectTimeout: 30000
+      socketTimeout: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      maxEvictableIdleTimeMillis: 900000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        allow:
+        url-pattern: /druid/*
+        login-username: travel
+        login-password: 123456
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+      connection-error-retry-attempts: 1
+      not-full-timeout-retry-count: 1
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password:
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+
+useRecommend: false
